@@ -1,0 +1,5 @@
+---
+ - name: Configure device - Cisco
+   ios_config:
+    src: "{{ output_dir }}/{{ inventory_hostname }}.cfg"
+    match: none

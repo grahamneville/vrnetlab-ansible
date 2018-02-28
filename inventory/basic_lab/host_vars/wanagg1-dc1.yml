@@ -1,0 +1,11 @@
+---
+layer3_interfaces:
+ - { interface: 'GigabitEthernet2', ip_address: '10.1.1.1/30' }
+ - { interface: 'GigabitEthernet3', ip_address: '10.1.20.1/30' }
+ 
+bgp:
+ as: "65001"
+ router_id: "10.1.20.1"
+ neighbours:
+  - { peer_ip: '10.1.1.2', remote_as: '65002' }
+  - { peer_ip: '10.1.20.2', remote_as: '65020' }

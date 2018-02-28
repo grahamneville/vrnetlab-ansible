@@ -1,0 +1,22 @@
+[dc1]
+wanagg1-dc1
+wanagg2-dc1
+
+[dc2]
+wanagg1-dc2
+wanagg2-dc2
+
+[remote1]
+wanedge1-remote1
+wanedge2-remote1
+infra1-remote1 ansible_network_os=eos
+infra2-remote1 ansible_network_os=eos
+
+[all:vars]
+lab_id=basic_lab
+ansible_connection=network_cli
+ansible_network_os=ios
+ansible_become=yes
+ansible_become_method=enable
+ansible_user=vrnetlab
+ansible_ssh_pass=VR-netlab9

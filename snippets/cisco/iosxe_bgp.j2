@@ -1,0 +1,10 @@
+!
+{% if bgp is defined %}
+router bgp {{ bgp.as }}
+ bgp router-id {{ bgp.router_id }}
+{% for bgp_neighbour in bgp.neighbours %}
+ neighbor {{ bgp_neighbour.peer_ip }} remote-as {{ bgp_neighbour.remote_as }} 
+{% endfor %}
+{% endif %}
+!
+

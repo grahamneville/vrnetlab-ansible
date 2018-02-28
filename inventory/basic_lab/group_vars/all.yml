@@ -1,0 +1,24 @@
+---
+output_dir: "output/{{ lab_id }}"
+
+xcon:
+ links:
+  - wanagg1-dc1
+  - wanagg2-dc1
+  - wanagg1-dc2
+  - wanagg2-dc2
+  - wanedge1-remote1
+  - wanedge2-remote1
+  - infra1-remote1
+  - infra2-remote1
+ p2p:
+  - { a_device: 'wanagg1-dc1', a_port: '1', b_device: 'wanagg1-dc2', b_port: '1' }
+  - { a_device: 'wanagg1-dc1', a_port: '2', b_device: 'wanedge1-remote1', b_port: '1' }
+  - { a_device: 'wanagg1-dc2', a_port: '2', b_device: 'wanedge2-remote1', b_port: '1' }
+  - { a_device: 'wanedge1-remote1', a_port: '2', b_device: 'wanedge2-remote1', b_port: '2' }
+  - { a_device: 'wanedge1-remote1', a_port: '3', b_device: 'wanedge2-remote1', b_port: '3' }
+  - { a_device: 'wanedge1-remote1', a_port: '4', b_device: 'infra1-remote1', b_port: '2' }
+  - { a_device: 'wanedge2-remote1', a_port: '4', b_device: 'infra2-remote1', b_port: '2' }
+  - { a_device: 'infra1-remote1', a_port: '3', b_device: 'infra2-remote1', b_port: '3' }
+  - { a_device: 'infra1-remote1', a_port: '4', b_device: 'infra2-remote1', b_port: '4' }
+

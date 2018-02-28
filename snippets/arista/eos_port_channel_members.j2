@@ -1,0 +1,11 @@
+!
+{% if port_channel_members is defined %}
+{% for port_channel_member in port_channel_members %}
+interface {{ port_channel_member.interface }}
+   no switchport
+   channel-group {{ port_channel_member.channel_group }} mode active
+!
+{% endfor %}
+{% endif %}
+!
+

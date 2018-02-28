@@ -1,0 +1,16 @@
+---
+ - name: Create Output Directory
+   file: path={{ output_dir }} state=directory
+   run_once: true
+
+ - name: Template Configs - Cisco
+   template:
+     src: iosxe_config.j2
+     dest: "{{ output_dir }}/{{ inventory_hostname }}.cfg"
+   when: ansible_network_os == 'ios'
+
+ - name: Template Configs - Arista
+   template:
+     src: eos_config.j2
+     dest: "{{ output_dir }}/{{ inventory_hostname }}.cfg"
+   when: ansible_network_os == 'eos'

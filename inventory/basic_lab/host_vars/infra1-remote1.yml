@@ -1,0 +1,18 @@
+---
+platform: "veos"
+version: "4.20.1F"
+
+layer3_interfaces:
+ - { interface: 'Port-Channel1', ip_address: '10.1.20.13/30' }
+ - { interface: 'Ethernet1', ip_address: '10.1.20.18/30' }
+ 
+port_channel_members:
+ - { interface: 'Ethernet2', channel_group: '1' }
+ - { interface: 'Ethernet3', channel_group: '1' } 
+
+bgp:
+ as: "65021"
+ router_id: "10.1.20.13"
+ neighbours:
+  - { peer_ip: '10.1.20.17', remote_as: '65021' }
+  - { peer_ip: '10.1.20.14', remote_as: '65020' }

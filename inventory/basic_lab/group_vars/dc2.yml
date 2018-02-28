@@ -1,0 +1,4 @@
+---
+platform: "csr"
+version: "16.06.02"
+docker_image: "vr-{{ platform }}:{{ version }}"
