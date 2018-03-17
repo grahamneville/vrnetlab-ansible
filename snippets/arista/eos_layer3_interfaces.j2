@@ -4,6 +4,7 @@
 interface {{ layer3_interface.interface }}
    no switchport
    ip address {{ layer3_interface.ip_address }}
+   no shutdown
 !
 {% endfor %}
 {% endif %}

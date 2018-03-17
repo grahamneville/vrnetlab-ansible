@@ -1,4 +1,8 @@
 ---
+## Usage Example:
+##	ansible-playbook -i inventory/basic_lab/hosts site.yml
+##
+
  - name: Build Lab
    hosts: all
    gather_facts: no

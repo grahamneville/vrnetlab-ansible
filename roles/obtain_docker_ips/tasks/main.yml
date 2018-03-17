@@ -7,3 +7,7 @@
    set_fact:
      ansible_host: "{{ docker_container_ip.stdout }}"
 
+ - name: Print Docker IPs to screen
+   debug:
+     msg:
+      - "{{ inventory_hostname }} - {{ docker_container_ip.stdout }}"

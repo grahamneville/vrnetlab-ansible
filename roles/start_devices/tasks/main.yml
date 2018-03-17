@@ -11,7 +11,6 @@
 
  - name: Template vrxcon p2p links 
    set_fact:
-     xcon_links: "{% for device in xcon.links %}{{ device }}{% if not loop.last %} {% endif %}{% endfor %}"
      xcon_p2p: "--p2p {% for p2p in xcon.p2p %}{{  p2p.a_device }}/{{ p2p.a_port }}--{{ p2p.b_device }}/{{ p2p.b_port }}{% if not loop.last %} {% endif %}{% endfor %}"
    run_once: true
 
@@ -21,13 +20,5 @@
      name: "bridge"
      image: vr-xcon
      command: "{{ xcon_p2p }}"
-     links:
-      - wanagg1-dc1
-      - wanagg2-dc1
-      - wanagg1-dc2
-      - wanagg2-dc2
-      - wanedge1-remote1
-      - wanedge2-remote1
-      - infra1-remote1
-      - infra2-remote1
+     links: "{{ xcon.links | default([]) }}"
    run_once: true

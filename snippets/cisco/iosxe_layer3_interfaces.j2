@@ -3,6 +3,7 @@
 {% for layer3_interface in layer3_interfaces %}
 interface {{ layer3_interface.interface }}
  ip address {{ layer3_interface.ip_address | ipaddr('address') }} {{ layer3_interface.ip_address | ipaddr('netmask') }}
+ no shutdown
 !
 {% endfor %}
 {% endif %}

@@ -4,6 +4,7 @@
 interface {{ port_channel_member.interface }}
  no ip address
  channel-group {{ port_channel_member.channel_group }}
+ no shutdown
 !
 {% endfor %}
 {% endif %}
