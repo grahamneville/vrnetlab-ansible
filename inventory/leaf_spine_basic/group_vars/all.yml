@@ -1,0 +1,15 @@
+---
+output_dir: "output/{{ lab_id }}"
+
+xcon:
+ links:
+  - spine1-h1
+  - spine2-h1
+  - leaf1-h1
+  - leaf2-h1
+ p2p:
+  - { a_device: 'spine1-h1', a_port: '1', b_device: 'leaf1-h1', b_port: '1' }
+  - { a_device: 'spine1-h1', a_port: '1', b_device: 'leaf2-h1', b_port: '1' }
+  - { a_device: 'spine2-h1', a_port: '1', b_device: 'leaf1-h1', b_port: '2' }
+  - { a_device: 'spine2-h1', a_port: '1', b_device: 'leaf2-h1', b_port: '2' }
+

@@ -1,0 +1,12 @@
+{% set base = "snippets/"+lab_id+"/arista" %}
+!
+{% include base+'/eos_hostname.j2' %}
+!
+{# include base+'/eos_lldp_run.j2' #}
+!
+{# include base+'/eos_layer3_interfaces.j2' #}
+!
+{# include base+'/eos_ip_routing.j2' #}
+!
+{# include base+'/eos_bgp.j2' #}
+!

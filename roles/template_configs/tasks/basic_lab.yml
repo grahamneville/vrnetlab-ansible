@@ -1,0 +1,12 @@
+---
+ - name: Template Configs - Cisco
+   template:
+     src: "{{ lab_id }}/iosxe_config.j2"
+     dest: "{{ output_dir }}/{{ inventory_hostname }}.cfg"
+   when: ansible_network_os == 'ios'
+
+ - name: Template Configs - Arista
+   template:
+     src: "{{ lab_id }}/eos_config.j2"
+     dest: "{{ output_dir }}/{{ inventory_hostname }}.cfg"
+   when: ansible_network_os == 'eos'

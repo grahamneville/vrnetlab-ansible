@@ -1,0 +1,17 @@
+---
+ - name: Template Configs - Arista - Leaf
+   template:
+     src: "{{ lab_id }}/eos_leaf_config.j2"
+     dest: "{{ output_dir }}/{{ inventory_hostname }}.cfg"
+   when:
+    - ansible_network_os == 'eos'
+    - "'LEAF' in group_names"
+
+ - name: Template Configs - Arista - Spine
+   template:
+     src: "{{ lab_id }}/eos_spine_config.j2"
+     dest: "{{ output_dir }}/{{ inventory_hostname }}.cfg"
+   when:
+    - ansible_network_os == 'eos'
+    - "'SPINE' in group_names"
+

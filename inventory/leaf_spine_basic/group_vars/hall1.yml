@@ -1,0 +1,4 @@
+---
+platform: "veos"
+version: "4.20.1F"
+docker_image: "vr-{{ platform }}:{{ version }}"
