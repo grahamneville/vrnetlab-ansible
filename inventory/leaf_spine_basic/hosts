@@ -6,17 +6,20 @@ spine2-h1
 leaf1-h1
 leaf2-h1 
 
+[ENDHOST]
+endhost1
+endhost2
+
 [hall1:children]
 spine-hall1
 leaf-hall1
+ENDHOST
 
 [SPINE:children]
 spine-hall1
 
 [LEAF:children]
 leaf-hall1
-
-
 
 [all:vars]
 lab_id=leaf_spine_basic

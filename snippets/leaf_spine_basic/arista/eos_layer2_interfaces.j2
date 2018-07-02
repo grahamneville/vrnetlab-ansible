@@ -1,0 +1,16 @@
+!
+{% if 'leaf' in inventory_hostname %}
+{% if layer2_interfaces is defined %}
+{% for layer2_interface in layer2_interfaces %}
+interface {{ layer2_interface.interface }}
+   description {{ layer2_interface.description }}
+{% if layer2_interface.mode == 'access' %}
+   switchport mode access
+   switchport access vlan {{ layer2_interface.vlan }}
+{% endif %}
+!
+{% endfor %}
+{% endif %}
+{% endif %}
+!
+

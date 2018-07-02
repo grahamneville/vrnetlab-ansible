@@ -1,14 +1,15 @@
-{% set base = "snippets/"+lab_id+"/arista" %}
+{% set common = "snippets/common/arista" %}
+{% set lab_snippets = "snippets/"+lab_id+"/arista" %}
 !
-{% include base+'/eos_hostname.j2' %}
+{% include common+'/eos_hostname.j2' %}
 !
-{% include base+'/eos_lldp_run.j2' %}
+{% include common+'/eos_lldp_run.j2' %}
 !
-{% include base+'/eos_layer3_interfaces.j2' %}
+{% include lab_snippets+'/eos_layer3_interfaces.j2' %}
 !
-{% include base+'/eos_port_channel_members.j2' %}
+{% include lab_snippets+'/eos_port_channel_members.j2' %}
 !
-{% include base+'/eos_ip_routing.j2' %}
+{% include common+'/eos_ip_routing.j2' %}
 !
-{% include base+'/eos_bgp.j2' %}
+{% include lab_snippets+'/eos_bgp.j2' %}
 !

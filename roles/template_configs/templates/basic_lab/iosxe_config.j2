@@ -1,12 +1,13 @@
-{% set base = "snippets/"+lab_id+"/cisco" %}
+{% set common = "snippets/common/cisco" %}
+{% set lab_snippets = "snippets/"+lab_id+"/cisco" %}
 !
-{% include base+'/iosxe_hostname.j2' %}
+{% include common+'/iosxe_hostname.j2' %}
 !
-{% include base+'/iosxe_lldp_run.j2' %}
+{% include common+'/iosxe_lldp_run.j2' %}
 !
-{% include base+'/iosxe_layer3_interfaces.j2' %}
+{% include lab_snippets+'/iosxe_layer3_interfaces.j2' %}
 !
-{% include base+'/iosxe_port_channel_members.j2' %}
+{% include lab_snippets+'/iosxe_port_channel_members.j2' %}
 !
-{% include base+'/iosxe_bgp.j2' %}
+{% include lab_snippets+'/iosxe_bgp.j2' %}
 !

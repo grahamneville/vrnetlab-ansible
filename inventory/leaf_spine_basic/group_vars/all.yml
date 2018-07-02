@@ -7,9 +7,28 @@ xcon:
   - spine2-h1
   - leaf1-h1
   - leaf2-h1
+  - endhost1
+  - endhost2
  p2p:
-  - { a_device: 'spine1-h1', a_port: '1', b_device: 'leaf1-h1', b_port: '1' }
-  - { a_device: 'spine1-h1', a_port: '1', b_device: 'leaf2-h1', b_port: '1' }
-  - { a_device: 'spine2-h1', a_port: '1', b_device: 'leaf1-h1', b_port: '2' }
-  - { a_device: 'spine2-h1', a_port: '1', b_device: 'leaf2-h1', b_port: '2' }
+# Remember on eos that Interface 1 belongs to management, Data port is from port 2 on
+# E.g. port 1 = Management1, port 2 = Ethernet1, port 3 = Ethernet2
+  - { a_device: 'spine1-h1', a_port: '2', b_device: 'leaf1-h1', b_port: '2' }
+  - { a_device: 'spine1-h1', a_port: '3', b_device: 'leaf2-h1', b_port: '2' }
+  - { a_device: 'spine2-h1', a_port: '2', b_device: 'leaf1-h1', b_port: '3' }
+  - { a_device: 'spine2-h1', a_port: '3', b_device: 'leaf2-h1', b_port: '3' }
+  - { a_device: 'leaf1-h1', a_port: '4', b_device: 'leaf2-h1', b_port: '4' }
+  - { a_device: 'leaf1-h1', a_port: '5', b_device: 'endhost1', b_port: '2' }
+  - { a_device: 'leaf2-h1', a_port: '5', b_device: 'endhost2', b_port: '2' }
+
+
+leaf_interconnects: 10.1.10.0/24
+spine_downlinks: 10.1.20.0/24
+leaf_loopbacks: 10.1.30.0/24
+host_subnets: 172.12.0.0/16
+
+leaf_vlans:
+ - { vlan_id: '100', description: 'WEB', vxlan: yes, subnet: '{{ host_subnets | ipsubnet(24, 0) }}' }
+ - { vlan_id: '200', description: 'APP', vxlan: yes, subnet: '{{ host_subnets | ipsubnet(24, 1) }}' }
+ - { vlan_id: '300', description: 'DB', vxlan: yes, subnet: '{{ host_subnets | ipsubnet(24, 2) }}' }
+ - { vlan_id: '301', description: 'DB_RAC', vxlan: no, subnet: '{{ host_subnets | ipsubnet(24, 3) }}' }
 

@@ -1,0 +1,28 @@
+!
+{% if layer3_interfaces is defined %}
+{% for layer3_interface in layer3_interfaces %}
+interface {{ layer3_interface.interface }}
+   description {{ layer3_interface.description }}
+{% if 'Loopback' not in layer3_interface.interface %}
+   no switchport
+{% endif %}
+   ip address {{ layer3_interface.ip_address }}
+   no shutdown
+!
+{% endfor %}
+{% endif %}
+!
+{% if 'leaf' in inventory_hostname %}
+{% if leaf_vlans is defined %}
+{% for leaf_vlan in leaf_vlans %}
+interface Vlan{{ leaf_vlan.vlan_id }}
+   description {{ leaf_vlan.description }}
+{% if leaf_vlan.vxlan %}
+   ip address virtual {{ leaf_vlan.subnet | ipaddr('-2') }}
+{% endif %}
+!
+{% endfor %}
+{% endif %}
+{% endif %}
+!
+

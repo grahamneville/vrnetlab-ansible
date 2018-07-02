@@ -1,12 +1,12 @@
 ---
 layer3_interfaces:
- - { interface: 'Ethernet1', ip_address: '10.1.20.9/30', description: 'To Leaf1' }
+ - { interface: 'Ethernet1', ip_address: '10.1.20.5/30', description: 'To Leaf1' }
  - { interface: 'Ethernet2', ip_address: '10.1.20.13/30', description: 'To Leaf2' }
 
 bgp:
  as: "65020"
- router_id: "10.1.20.9"
+ router_id: "10.1.20.5"
  neighbours:
-  - { peer_ip: '10.1.20.10', remote_as: '65021', description: 'Leaf1' }
+  - { peer_ip: '10.1.20.6', remote_as: '65021', description: 'Leaf1' }
   - { peer_ip: '10.1.20.14', remote_as: '65021', description: 'Leaf2' }
 

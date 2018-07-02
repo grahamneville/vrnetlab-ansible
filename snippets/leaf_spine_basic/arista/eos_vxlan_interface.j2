@@ -1,0 +1,11 @@
+interface Vxlan1
+   vxlan source-interface Loopback0
+   vxlan udp-port 4789
+{% if leaf_vlans is defined %}
+{% for leaf_vlan in leaf_vlans %}
+{% if leaf_vlan.vxlan %}
+   vxlan vlan {{ leaf_vlan.vlan_id }} vni {{ leaf_vlan.vlan_id | int + 1000000 }}
+{% endif %}
+{% endfor %}
+{% endif %}
+!

@@ -1,0 +1,8 @@
+{% if leaf_vlans is defined %}
+{% for leaf_vlan in leaf_vlans %}
+vlan {{ leaf_vlan.vlan_id }}
+   name {{ leaf_vlan.description }}
+!
+{% endfor %}
+{% endif %}
+!

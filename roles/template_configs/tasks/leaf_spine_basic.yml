@@ -15,3 +15,11 @@
     - ansible_network_os == 'eos'
     - "'SPINE' in group_names"
 
+ - name: Template Configs - Arista - EndHost
+   template:
+     src: "{{ lab_id }}/eos_endhost_config.j2"
+     dest: "{{ output_dir }}/{{ inventory_hostname }}.cfg"
+   when:
+    - ansible_network_os == 'eos'
+    - "'ENDHOST' in group_names"
+
