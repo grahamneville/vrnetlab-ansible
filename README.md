@@ -11,8 +11,8 @@ vrnetlab now includes my patch to get SSH working on vEOS:
 VxLan Lab:
 - Features 2 Spine switches, 2 Leaf switches, 2 End Hosts
 - End Hosts are just vEOS devices
-- End Host1 = 172.12.0.100 - connected to Leaf1
-- End Host2 = 172.12.0.200 - connected to Leaf2
+- End Host1 connected to Leaf1
+- End Host2 connected to Leaf2
 - VxLAN didn't work in 4.20.1F, used 4.20.7M - also Layer3 interfaces have to have a high MTU set
 
 Uses Ansible 2.5 and vrnetlab docker containers to spin up a lab environment running BGP with Cisco IOSXE and Arista EOS Devices.

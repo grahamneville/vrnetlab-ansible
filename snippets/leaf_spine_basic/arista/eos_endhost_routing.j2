@@ -1,0 +1,8 @@
+{% if layer3_interfaces is defined %}
+{% for layer3_interface in layer3_interfaces %}
+{% if layer3_interface.default_gateway == true %}
+ip route 0.0.0.0/0 {{ layer3_interface.ip_address | ipaddr('network/prefix') | ipaddr('-2') | ipaddr('address') }}
+{% endif %}
+{% endfor %}
+{% endif %}
+

@@ -1,4 +1,8 @@
 ---
+platform: "veos"
+version: "4.20.7M"
+docker_image: "vrnetlab/vr-{{ platform }}:{{ version }}"
+
 output_dir: "output/{{ lab_id }}"
 
 xcon:
@@ -16,9 +20,14 @@ xcon:
   - { a_device: 'spine1-h1', a_port: '3', b_device: 'leaf2-h1', b_port: '2' }
   - { a_device: 'spine2-h1', a_port: '2', b_device: 'leaf1-h1', b_port: '3' }
   - { a_device: 'spine2-h1', a_port: '3', b_device: 'leaf2-h1', b_port: '3' }
-  - { a_device: 'leaf1-h1', a_port: '4', b_device: 'leaf2-h1', b_port: '4' }
   - { a_device: 'leaf1-h1', a_port: '5', b_device: 'endhost1', b_port: '2' }
+  - { a_device: 'leaf1-h1', a_port: '6', b_device: 'endhost1', b_port: '3' }
+  - { a_device: 'leaf1-h1', a_port: '7', b_device: 'endhost1', b_port: '4' }
+  - { a_device: 'leaf1-h1', a_port: '8', b_device: 'endhost1', b_port: '5' }
   - { a_device: 'leaf2-h1', a_port: '5', b_device: 'endhost2', b_port: '2' }
+  - { a_device: 'leaf2-h1', a_port: '6', b_device: 'endhost2', b_port: '3' }
+  - { a_device: 'leaf2-h1', a_port: '7', b_device: 'endhost2', b_port: '4' }
+  - { a_device: 'leaf2-h1', a_port: '8', b_device: 'endhost2', b_port: '5' }
 
 
 leaf_interconnects: 10.1.10.0/24
@@ -27,8 +36,8 @@ leaf_loopbacks: 10.1.30.0/24
 host_subnets: 172.12.0.0/16
 
 leaf_vlans:
- - { vlan_id: '100', description: 'WEB', vxlan: yes, subnet: '{{ host_subnets | ipsubnet(24, 0) }}' }
- - { vlan_id: '200', description: 'APP', vxlan: yes, subnet: '{{ host_subnets | ipsubnet(24, 1) }}' }
- - { vlan_id: '300', description: 'DB', vxlan: yes, subnet: '{{ host_subnets | ipsubnet(24, 2) }}' }
- - { vlan_id: '301', description: 'DB_RAC', vxlan: no, subnet: '{{ host_subnets | ipsubnet(24, 3) }}' }
+ - { vlan_id: '100', description: 'WEB', vxlan: yes, subnet: '{{ host_subnets | ipsubnet(24, 0) }}', svi: true }
+ - { vlan_id: '200', description: 'APP', vxlan: yes, subnet: '{{ host_subnets | ipsubnet(24, 1) }}', svi: true }
+ - { vlan_id: '300', description: 'DB', vxlan: yes, subnet: '{{ host_subnets | ipsubnet(24, 2) }}', svi: true }
+ - { vlan_id: '301', description: 'DB_RAC', vxlan: yes, subnet: '{{ host_subnets | ipsubnet(24, 3) }}', svi: false }
 

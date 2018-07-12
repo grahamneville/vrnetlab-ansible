@@ -2,6 +2,7 @@
  - name: Obtain IP for Docker Container
    command: docker inspect --format \{\{' .NetworkSettings.IPAddress '\}\} {{ inventory_hostname }}
    register: docker_container_ip
+   changed_when: false
 
  - name: Set Docker IP as a fact
    set_fact:

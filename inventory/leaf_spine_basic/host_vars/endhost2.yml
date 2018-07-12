@@ -1,4 +1,7 @@
 ---
 layer3_interfaces:
- - { interface: 'Ethernet1', ip_address: '172.12.0.200/24', description: 'To Leaf2' }
+ - { interface: 'Ethernet1', ip_address: '172.12.0.200/24', description: 'To Leaf2', default_gateway: true }
+ - { interface: 'Ethernet2', ip_address: '172.12.1.200/24', description: 'To Leaf2-app', default_gateway: false }
+ - { interface: 'Ethernet3', ip_address: '172.12.2.200/24', description: 'To Leaf2-db', default_gateway: false }
+ - { interface: 'Ethernet4', ip_address: '172.12.3.200/24', description: 'To Leaf2-dc_rac', default_gateway: false }
 

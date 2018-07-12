@@ -3,10 +3,13 @@ layer3_interfaces:
  - { interface: 'Loopback0', ip_address: '10.1.30.2/32', description: 'Loopback0 VTEP' }
  - { interface: 'Ethernet1', ip_address: '10.1.20.10/30', description: 'Spine1' }
  - { interface: 'Ethernet2', ip_address: '10.1.20.14/30', description: 'Spine2' }
- - { interface: 'Ethernet3', ip_address: '10.1.10.2/30', description: 'Leaf1' }
 
 layer2_interfaces:
  - { interface: 'Ethernet4', mode: 'access', vlan: '100', description: 'endhost2' }
+ - { interface: 'Ethernet5', mode: 'access', vlan: '200', description: 'endhost2-app' }
+ - { interface: 'Ethernet6', mode: 'access', vlan: '300', description: 'endhost2-db' }
+ - { interface: 'Ethernet7', mode: 'access', vlan: '301', description: 'endhost2-db_rac' }
+
 
 bgp:
  as: "65021"
@@ -14,5 +17,4 @@ bgp:
  neighbours:
   - { peer_ip: '10.1.20.9', remote_as: '65020', description: 'Spine1' }
   - { peer_ip: '10.1.20.13', remote_as: '65020', description: 'Spine2' }
-  - { peer_ip: '10.1.10.1', remote_as: '65021', description: 'Leaf1' }
 

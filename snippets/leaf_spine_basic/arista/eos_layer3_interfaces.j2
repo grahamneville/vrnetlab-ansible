@@ -3,7 +3,7 @@
 {% for layer3_interface in layer3_interfaces %}
 interface {{ layer3_interface.interface }}
    description {{ layer3_interface.description }}
-   mtu 9198
+   mtu 9214
 {% if 'Loopback' not in layer3_interface.interface %}
    no switchport
 {% endif %}
@@ -16,12 +16,14 @@ interface {{ layer3_interface.interface }}
 {% if 'leaf' in inventory_hostname %}
 {% if leaf_vlans is defined %}
 {% for leaf_vlan in leaf_vlans %}
+{% if leaf_vlan.svi == true %}
 interface Vlan{{ leaf_vlan.vlan_id }}
    description {{ leaf_vlan.description }}
 {% if leaf_vlan.vxlan %}
    ip address virtual {{ leaf_vlan.subnet | ipaddr('-2') }}
 {% endif %}
 !
+{% endif %}
 {% endfor %}
 {% endif %}
 {% endif %}

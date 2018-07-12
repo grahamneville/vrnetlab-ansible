@@ -2,6 +2,7 @@
 {% if bgp is defined %}
 router bgp {{ bgp.as }}
    router-id {{ bgp.router_id }}
+   bgp allowas-in 2
 {% for bgp_neighbour in bgp.neighbours %}
    neighbor {{ bgp_neighbour.peer_ip }} remote-as {{ bgp_neighbour.remote_as }} 
    neighbor {{ bgp_neighbour.peer_ip }} description {{ bgp_neighbour.description }}
