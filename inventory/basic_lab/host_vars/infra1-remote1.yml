@@ -1,6 +1,6 @@
 ---
 platform: "veos"
-version: "4.20.1F"
+version: "4.20.7M"
 
 layer3_interfaces:
  - { interface: 'Port-Channel1', ip_address: '10.1.20.13/30' }

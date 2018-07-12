@@ -6,8 +6,8 @@
      privileged: true
    register: container
    until: container.ansible_facts.docker_container.State.Health.Status == "healthy"
-   retries: 10
-   delay: 180
+   retries: 30
+   delay: 60
 
  - name: Template vrxcon p2p links 
    set_fact:

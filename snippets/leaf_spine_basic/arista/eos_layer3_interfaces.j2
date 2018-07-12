@@ -3,6 +3,7 @@
 {% for layer3_interface in layer3_interfaces %}
 interface {{ layer3_interface.interface }}
    description {{ layer3_interface.description }}
+   mtu 9198
 {% if 'Loopback' not in layer3_interface.interface %}
    no switchport
 {% endif %}

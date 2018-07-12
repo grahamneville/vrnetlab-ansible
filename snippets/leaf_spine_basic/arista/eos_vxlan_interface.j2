@@ -1,4 +1,5 @@
 interface Vxlan1
+   vxlan multicast-group 227.10.1.1
    vxlan source-interface Loopback0
    vxlan udp-port 4789
 {% if leaf_vlans is defined %}
@@ -7,5 +8,16 @@ interface Vxlan1
    vxlan vlan {{ leaf_vlan.vlan_id }} vni {{ leaf_vlan.vlan_id | int + 1000000 }}
 {% endif %}
 {% endfor %}
+{%- set group = 'LEAF' -%}
+{%- set vtep_flood_list = [] -%}
+{%- for host in groups[group] -%}
+{%- for layer3_interface in hostvars[host]['layer3_interfaces'] -%}
+{%- if layer3_interface.interface == 'Loopback0' -%}
+{{ vtep_flood_list.append(layer3_interface.ip_address | ipaddr('address')) }}
+{%- endif -%}
+{%- endfor -%}
+{%- endfor %}
+   vxlan flood vtep {{ vtep_flood_list|join(' ') }}
 {% endif %}
 !
+
